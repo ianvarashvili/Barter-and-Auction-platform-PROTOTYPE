@@ -1,0 +1,264 @@
+/* Color Palette */
+:root {
+    --primary-blue: #003049;   /* Deep Blue - Headers/Primary */
+    --soft-blue: #98C1D9;      /* Soft Blue - Accents/Secondary */
+    --light-bg: #ffd8be;       /* Very Light Blue - Background */
+    --accent-orange: #EE6C4D;  /* Burnt Orange - Buttons/Highlights */
+    --dark-text: #003049;      /* Dark Gunmetal - Text */
+    --white: #ffeedd;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdf0d5;
+    color: var(--dark-text);
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation */
+nav {
+    background-color: #C1121F;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #ffd8be;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 1.5rem;
+    transition: 0.3s;
+}
+
+.nav-btn:hover { color: var(--white); }
+
+.btn-cta {
+    background-color: #003049;
+    color: #ffd8be;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-cta:hover { transform: scale(1.05); }
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: fdf0d5;
+    border-bottom: 1px solid #C1121F;
+}
+
+.hero h1 {
+    color: #C1121F;
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Filter Buttons */
+.toggle-container { margin-top: 2rem; }
+
+.toggle-btn {
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--primary-blue);
+    background: transparent;
+    color: var(--primary-blue);
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.toggle-btn:hover { background: #c1121f; border-color: #780000; color: #fff;}
+
+.toggle-btn.active {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+/* Main Layout */
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Cards */
+.card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.card:hover { transform: translateY(-8px); }
+
+.card-img {
+    width: 100%;       /* Full width of the card */
+    height: 220px;     /* Keep height consistent for all cards */
+    display: block;    /* Removes bottom gap */
+    object-fit: cover; /* This is the "magic" property for professional looks */
+    border-bottom: 2px solid var(--navy-dark);
+}
+
+.card-body { padding: 1.5rem; }
+
+.badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-auction { background-color: var(--accent-orange); color: white; }
+.badge-barter { background-color: var(--soft-blue); color: var(--dark-text); }
+
+.card h3 { margin: 10px 0; color: var(--primary-blue); }
+
+.details { margin-bottom: 1.5rem; font-size: 0.95rem; }
+.timer { color: #888; font-size: 0.85rem; margin-top: 5px; }
+
+/* Buttons inside cards */
+.btn-main, .btn-secondary {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.btn-main { background-color: var(--primary-blue); color: white; }
+.btn-main:hover { background-color: var(--dark-text); }
+
+.btn-secondary { background-color: transparent; border: 2px solid var(--primary-blue); color: var(--primary-blue); }
+.btn-secondary:hover { background-color: var(--primary-blue); color: white; }
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(41, 50, 65, 0.8); /* Dark tint using palette */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 25px rgba(0,0,0,0.2);
+}
+
+.modal-input {
+    width: 80%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid var(--soft-blue);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.modal-input:focus { border-color: var(--primary-blue); }
+
+.modal-actions { display: flex; gap: 10px; justify-content: center; }
+.btn-cancel {
+    padding: 0.8rem; background: #ddd; border: none; border-radius: 8px; cursor: pointer;
+}
+
+/* ========================================= */
+/* MOBILE RESPONSIVENESS (MEDIA QUERIES)     */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* Adjust Navbar */
+    nav {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .nav-btn {
+        margin-right: 0;
+        font-size: 1.1rem;
+    }
+
+    .btn-cta {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    /* Adjust Hero */
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Smaller font for mobile */
+    }
+
+    /* Stack Filter Buttons */
+    .toggle-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .toggle-btn {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    /* Adjust Grid */
+    .grid {
+        /* Allow cards to go smaller on narrow phones */
+        grid-template-columns: 1fr; 
+    }
+
+    .card-img {
+        height: 180px; /* Slightly shorter images */
+    }
+}

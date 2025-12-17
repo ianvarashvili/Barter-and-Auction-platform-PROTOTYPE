@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade & Bid | Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Digital<span style="color: var(--accent-orange)">Ex</span></div>
+        <div class="nav-links">
+            <button class="nav-btn">Browse</button>
+            <button class="nav-btn">My Listings</button>
+            <button class="nav-btn">My Profile</button>
+            <button class="btn-cta" onclick="alert('Opens Create Listing Page')">+ Post Item</button>
+
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Trade what you have,<br>Bid on what you want.</h1>
+        <p>The secure marketplace for bartering and auctions.</p>
+        
+        <div class="toggle-container">
+            <button class="toggle-btn active" data-filter="all" onclick="filterItems('all')">View All</button>
+            <button class="toggle-btn" data-filter="auction" onclick="filterItems('auction')">Auctions</button>
+            <button class="toggle-btn" data-filter="barter" onclick="filterItems('barter')">Barter Only</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid" id="itemGrid">
+            
+            <div class="card item-auction">
+                <img src="imgs/camera.jpg" alt="Camera" class="card-img">
+                <div class="card-body">
+                    <span class="badge badge-auction">Auction</span>
+                    <h3>Vintage Film Camera</h3>
+                    <div class="details">
+                        <p class="price-tag">Current Bid: $125.00</p>
+                        <p class="timer">Ends in: 2h 15m</p>
+                    </div>
+                    <button class="btn-main" onclick="openModal('Vintage Film Camera')">Place Bid</button>
+                </div>
+            </div>
+
+            <div class="card item-barter">
+                <img src="imgs/guitar.jpg" alt="Guitar" class="card-img">
+                <div class="card-body">
+                    <span class="badge badge-barter">Barter Trade</span>
+                    <h3>Electric Guitar</h3>
+                    <div class="details">
+                        <p class="price-tag">Wants: Laptop or Tablet</p>
+                        <p class="timer">Posted 2 days ago</p>
+                    </div>
+                    <button class="btn-secondary" onclick="openModal('Electric Guitar')">Propose Trade</button>
+                </div>
+            </div>
+
+            <div class="card item-auction">
+                <img src="imgs/boots.jpg" alt="Boots" class="card-img">
+                <div class="card-body">
+                    <span class="badge badge-auction">Auction</span>
+                    <h3>Limited Boots</h3>
+                    <div class="details">
+                        <p class="price-tag">Current Bid: $240.00</p>
+                        <p class="timer">Ends in: 12m 30s</p>
+                    </div>
+                    <button class="btn-main" onclick="openModal('Limited Sneakers')">Place Bid</button>
+                </div>
+            </div>
+
+             <div class="card item-barter">
+                <img src="imgs/bike.jpg" alt="Bike" class="card-img">
+                <div class="card-body">
+                    <span class="badge badge-barter">Barter Trade</span>
+                    <h3>Mountain Bike</h3>
+                    <div class="details">
+                        <p class="price-tag">Wants: Office Chair</p>
+                        <p class="timer">Posted 5 hours ago</p>
+                    </div>
+                    <button class="btn-secondary" onclick="openModal('Mountain Bike')">Propose Trade</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="modal-title">Action</h2>
+            <p>Enter your offer amount or trade item:</p>
+            <input type="text" class="modal-input" placeholder="$0.00 or Item Name">
+            <div class="modal-actions">
+                <button class="btn-main" onclick="closeModal()">Confirm Offer</button>
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
