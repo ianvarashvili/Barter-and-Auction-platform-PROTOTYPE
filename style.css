@@ -168,6 +168,13 @@ nav {
 .btn-secondary:hover { background-color: var(--primary-blue); color: white; }
 
 /* Modal */
+#modal-status-label span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 10px;
+}
 .modal-overlay {
     display: none;
     position: fixed;
@@ -450,18 +457,29 @@ nav {
     font-size: 1.1rem;
     color: #C1121F; /* მიმდინარე ფასი წითლად */
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .view-hint {
-    color: #C1121F;
-    font-weight: bold;
-    font-size: 0.7rem;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+background-color: #80cafc6e;
+    color: #003049; /* Dark blue to match your logo */
+    font-weight: 700;
+    font-size: 0.95rem;
     text-transform: uppercase;
-    margin-top: 10px;
-    letter-spacing: 1px;
-    text-decoration: underline;
+    letter-spacing: 0.5px;
+    border-radius: 20px; /* Makes it pill-shaped/soft */
+    transition: all 0.3s ease;
     cursor: pointer;
+    border: 1px solid transparent;
+}
+
+/* Hover effect to make it feel "button-like" */
+.card:hover .view-hint {
+    background-color: #003049;
+    color: #fdf0d5; /* Cream color from your palette */
 }
 
 .close-modal {
@@ -474,4 +492,14 @@ nav {
 
 .modal-overlay.active {
     display: flex; /* Shows the modal */
+}
+
+.wants-label {
+    font-size: 0.75rem;
+    background: #00695c;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: inline-block;
 }

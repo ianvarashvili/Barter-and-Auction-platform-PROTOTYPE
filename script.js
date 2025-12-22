@@ -1,14 +1,10 @@
 // Function to handle filtering (Auction vs Barter)
 function filterItems(type) {
-    // Get all items
     const auctions = document.querySelectorAll('.item-auction');
     const barters = document.querySelectorAll('.item-barter');
     const buttons = document.querySelectorAll('.toggle-btn');
 
-    // Update active button visual
     buttons.forEach(btn => {
-        // We check if the clicked button matches the button in the loop
-        // If the 'onclick' event triggered this function, event.target is the button clicked
         if(btn.getAttribute('data-filter') === type){
             btn.classList.add('active');
         } else {
@@ -16,7 +12,6 @@ function filterItems(type) {
         }
     });
 
-    // Show/Hide logic
     if (type === 'all') {
         auctions.forEach(el => el.style.display = 'block');
         barters.forEach(el => el.style.display = 'block');
@@ -28,30 +23,41 @@ function filterItems(type) {
         barters.forEach(el => el.style.display = 'block');
     }
 }
-function openQuickView(name, price, desc, type, estValue = "") {
+
+function openQuickView(name, startPrice, desc, type, extraValue = "", extraDetail = "") {
     const modal = document.getElementById('modal');
-    
-    document.getElementById('modal-title').innerText = name;
-    document.getElementById('modal-desc').innerText = desc;
-    document.getElementById('modal-price').innerText = price;
-    
+    const wantsContainer = document.getElementById('modal-wants-container');
+    const wantsDetailText = document.getElementById('modal-wants-detail');
     const statusLabel = document.getElementById('modal-status-label');
+    const priceDisplay = document.getElementById('modal-price');
     const inputLabel = document.getElementById('input-label');
     const modalBtn = document.getElementById('modal-btn');
-    const inputField = document.getElementById('offer-input');
+
+    document.getElementById('modal-title').innerText = name;
+    document.getElementById('modal-desc').innerText = desc;
 
     if (type === 'auction') {
-        statusLabel.innerText = "Highest Bid / Starting:";
+        wantsContainer.style.display = 'none';
+        
+        // extraValue here will be the Current Bid
+        if (extraValue) {
+            statusLabel.innerHTML = `Starting Bid: ${startPrice} <br> <span style="color: #C1121F">Current High Bid:</span>`;
+            priceDisplay.innerText = extraValue;
+        } else {
+            statusLabel.innerText = "Starting Bid:";
+            priceDisplay.innerText = startPrice;
+        }
+
         inputLabel.innerText = "Your Bid (₾):";
         modalBtn.innerText = "Place Bid";
-        modalBtn.className = "btn-main";
-        inputField.placeholder = "e.g. 250";
     } else {
-        statusLabel.innerText = "Trader Wants / Est. Value (" + estValue + "):";
-        inputLabel.innerText = "What are you offering?";
+        // For Barter: extraValue is the Est. Market Value, extraDetail is the Wants info
+        wantsContainer.style.display = 'block';
+        wantsDetailText.innerText = extraDetail;
+        statusLabel.innerText = "Estimated Market Value:";
+        priceDisplay.innerText = "~" + extraValue;
+        inputLabel.innerText = "What are you offering in exchange?";
         modalBtn.innerText = "Propose Trade";
-        modalBtn.className = "btn-secondary";
-        inputField.placeholder = "e.g. My old iPhone";
     }
 
     modal.classList.add('active');
@@ -60,62 +66,48 @@ function openQuickView(name, price, desc, type, estValue = "") {
 function closeModal() {
     document.getElementById('modal').classList.remove('active');
 }
-// Modal Variables
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
 
-
-// Close modal if user clicks outside the white box
+// FIX: Close modal if user clicks outside the white box
 window.onclick = function(event) {
+    const modal = document.getElementById('modal');
     if (event.target == modal) {
-        modal.style.display = "none";
+        closeModal(); // Use the function that removes the class instead of style.display
     }
 }
 
-// Function to handle the heart click
 function toggleWishlist(element) {
     element.classList.toggle('active');
-    
-    // Add a little bounce effect when clicked
     element.style.transform = 'scale(1.3)';
     setTimeout(() => {
         element.style.transform = 'scale(1)';
     }, 200);
 }
 
-// Function to show ONLY items that have the 'active' heart
 function showWishlist() {
     const allCards = document.querySelectorAll('.card');
     const buttons = document.querySelectorAll('.toggle-btn');
-
-    // 1. Remove 'active' look from All/Auction/Barter buttons
     buttons.forEach(btn => btn.classList.remove('active'));
 
-    // 2. Loop through all cards
+    let count = 0;
     allCards.forEach(card => {
         const heart = card.querySelector('.wishlist-btn');
-        
-        // If the heart has the 'active' class, show it. Otherwise, hide it.
         if (heart.classList.contains('active')) {
             card.style.display = 'block';
+            count++;
         } else {
             card.style.display = 'none';
         }
     });
 
-    // 3. Simple check if wishlist is empty
-    const activeHearts = document.querySelectorAll('.wishlist-btn.active');
-    if (activeHearts.length === 0) {
+    if (count === 0) {
         alert("Your wishlist is empty! Heart some items first.");
-        filterItems('all'); // Go back to showing everything
+        filterItems('all');
     }
 }
 
 function startTimer(duration, displayId) {
     let timer = duration;
     const display = document.getElementById(displayId);
-
-    // If the element doesn't exist on the page, don't run the script
     if (!display) return;
 
     const interval = setInterval(function () {
@@ -132,22 +124,14 @@ function startTimer(duration, displayId) {
         if (--timer < 0) {
             clearInterval(interval);
             display.textContent = "STARTED";
-            display.parentElement.style.color = "#C1121F"; // Change "Starts in" text to red
+            display.parentElement.style.color = "#C1121F";
         }
     }, 1000);
 }
-// Start specific timers (duration in seconds)
-window.onload = function () {
-    startTimer(3600 * 2, "timer1"); // 2 hours for Item 1
-    startTimer(120, "timer2");      // 2 minutes for Item 2
-};
 
+// Consolidated window.onload (Important!)
 window.onload = function () {
-    // startTimer(seconds, "ID_of_the_span")
-    
-    startTimer(7200, "timer1");  // 2 hours for the Camera
-    startTimer(5500, "timer2");   // 5 minutes for the next item
-    startTimer(1500, "timer3");  // 25 minutes for the Desk
-    
-    // Add more here if you have more auction cards!
+    startTimer(7200, "timer1");  // 2 hours
+    startTimer(5500, "timer2");  // ~1.5 hours
+    startTimer(1500, "timer3");  // 25 minutes
 };
