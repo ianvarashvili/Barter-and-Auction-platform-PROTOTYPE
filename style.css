@@ -427,3 +427,51 @@ nav {
     text-align: center;
     text-decoration: none;
 }
+
+.countdown {
+    font-family: 'Courier New', Courier, monospace; /* Digital look */
+    font-weight: bold;
+    color: #003049;
+    background: #ffd8be;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.min-price {
+    font-size: 0.95rem;
+    color: #003049;
+    opacity: 0.8; /* ცოტა მკრთალი, რომ Current Bid გამოჩნდეს */
+
+    font-weight: 7550;
+    
+}
+
+.price-tag2 {
+    font-size: 1.1rem;
+    color: #C1121F; /* მიმდინარე ფასი წითლად */
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.view-hint {
+    color: #C1121F;
+    font-weight: bold;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.close-modal {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 20px;
+}
+
+.modal-overlay.active {
+    display: flex; /* Shows the modal */
+}

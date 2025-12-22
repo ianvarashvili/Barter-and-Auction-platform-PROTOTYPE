@@ -13,8 +13,8 @@
         <div class="nav-links">
             <button class="nav-btn" onclick="location.href='index.html'">Browse</button>
             <button class="nav-btn" onclick="location.href='index.html'">Testimonials</button>
-           <button class="nav-btn" onclick="showWishlist()">My Wishlist</button>
-           <a href="premium.html" class="nav-btn" style="text-decoration: none;">Premium</a>
+            <button class="nav-btn" onclick="showWishlist()">My Wishlist</button>
+            <a href="premium.html" class="nav-btn" style="text-decoration: none;">Premium</a>
             <a href="signup.html" class="nav-btn" style="text-decoration: none;">Sign Up</a>
             <button class="btn-cta" onclick="alert('Opens Create Listing Page')">+ Post Item</button>
         </div>
@@ -34,122 +34,117 @@
     <main class="container">
         <div class="grid" id="itemGrid">
             
-            <div class="card item-auction">
+            <div class="card item-auction" onclick="openQuickView('Vintage Camera', '₾200.00', 'In good visual condition, though the lens has some minor internal dust. Shutter fires accurately at all speeds. ', 'auction')">
                 <div class="card-image-container">
                     <img src="imgs/camera.jpg" alt="Camera" class="card-img">
-                    <button class="wishlist-btn" onclick="toggleWishlist(this)">♥</button>
+                    <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">♥</button>
                 </div>
                 <div class="card-body">
                     <span class="badge badge-auction">Auction</span>
                     <h3>Vintage Film Camera</h3>
                     <div class="details">
-                        <p class="price-tag">Current Bid: ₾225.00</p>
-                        <p class="timer">Ends in: 2h 15m</p>
+                        <p class="min-price">Starting Bid: ₾100.00</p>
+                        <p class="timer">Starts in: <span id="timer1" class="countdown">00:00:00</span></p>
                     </div>
-                    <button class="btn-main" onclick="openModal('Vintage Film Camera')">Place Bid</button>
-                    <a href="#" class="viewmore">view more</a>
+                    <p class="view-hint">Click to Bid</p>
                 </div>
             </div>
 
-            <div class="card item-barter">
+            <div class="card item-barter" onclick="openQuickView('Electric Guitar', 'Laptop or Tablet', 'Strings are old and need replacing, but electronics are fully functional.Perfect for beginners. Looking for a monitor or tablet. ', 'barter', '₾200.00')">
                 <div class="card-image-container">
                     <img src="imgs/guitar.jpg" alt="Guitar" class="card-img">
-                    <button class="wishlist-btn" onclick="toggleWishlist(this)">♥</button>
+                    <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">♥</button>
                 </div>
                 <div class="card-body">
                     <span class="badge badge-barter">Barter Trade</span>
                     <h3>Electric Guitar</h3>
                     <div class="details">
                         <p class="price-tag">Wants: Laptop or Tablet</p>
-                        <p class="timer">Posted 2 days ago</p>
+                        <p class="timer">Value: ~₾200.00</p>
                     </div>
-                    <button class="btn-secondary" onclick="openModal('Electric Guitar')">Propose Trade</button>
-                    <a href="#" class="viewmore">view more</a>
+                    <p class="view-hint">Click to Trade</p>
                 </div>
             </div>
 
-            <div class="card item-auction">
+            <div class="card item-auction" onclick="openQuickView('Limited Boots', '₾85.00', 'Size 39. Worn a few times, soles are almost new. There is a small, barely noticeable scratch on the toe of the left boot. Very high-quality, durable leather.', 'auction')">
                 <div class="card-image-container">
                     <img src="imgs/boots.jpg" alt="Boots" class="card-img">
-                    <button class="wishlist-btn" onclick="toggleWishlist(this)">♥</button>
+                    <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">♥</button>
                 </div>
                 <div class="card-body">
                     <span class="badge badge-auction">Auction</span>
                     <h3>Limited Boots</h3>
                     <div class="details">
-                        <p class="price-tag">Current Bid: ₾140.00</p>
-                        <p class="timer">Ends in: 12m 30s</p>
+                        <p class="min-price">Starting Bid: ₾85.00</p>
+                        <p class="price-tag price-tag2">Current Bid: ₾140.00</p>
+                        <p class="timer">Ends in: <span id="timer2" class="countdown">00:00:00</span></p>
                     </div>
-                    <button class="btn-main" onclick="openModal('Limited Boots')">Place Bid</button>
-                    <a href="#" class="viewmore">view more</a>
+                    <p class="view-hint">Click to Bid</p>
                 </div>
             </div>
 
-            <div class="card item-barter">
+            <div class="card item-barter" onclick="openQuickView('Mountain Bike', 'Office Chair', 'Suspension is a bit stiff and needs oiling. Gears shift smoothly. Tires were replaced last season. Willing to trade for a decent office chair', 'barter', '₾250.00')">
                 <div class="card-image-container">
                     <img src="imgs/bike.jpg" alt="Bike" class="card-img">
-                    <button class="wishlist-btn" onclick="toggleWishlist(this)">♥</button>
+                    <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">♥</button>
                 </div>
                 <div class="card-body">
                     <span class="badge badge-barter">Barter Trade</span>
                     <h3>Mountain Bike</h3>
                     <div class="details">
                         <p class="price-tag">Wants: Office Chair</p>
-                        <p class="timer">Posted 5 hours ago</p>
+                        <p class="timer">Value: ~₾250.00</p>
                     </div>
-                    <button class="btn-secondary" onclick="openModal('Mountain Bike')">Propose Trade</button>
-                    <a href="#" class="viewmore">view more</a>
+                    <p class="view-hint">Click to Trade</p>
                 </div>
             </div>
 
-            <div class="card item-barter">
+            <div class="card item-barter" onclick="openQuickView('Apple Clock', 'Desk Lamp', 'Novelty wall clock shaped like an Apple Watch. Made of plastic with a glossy finish.', 'barter', '₾40.00')">
                 <div class="card-image-container">
                     <img src="imgs/clock.jpg" alt="Clock" class="card-img">
-                    <button class="wishlist-btn" onclick="toggleWishlist(this)">♥</button>
+                    <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">♥</button>
                 </div>
                 <div class="card-body">
                     <span class="badge badge-barter">Barter Trade</span>
                     <h3>Apple Clock</h3>
                     <div class="details">
                         <p class="price-tag">Wants: Desk Lamp</p>
-                        <p class="timer">Posted 2 hours ago</p>
+                        <p class="timer">Value: ~₾40.00</p>
                     </div>
-                    <button class="btn-secondary" onclick="openModal('Apple Clock')">Propose Trade</button>
-                    <a href="#" class="viewmore">view more</a>
+                    <p class="view-hint">Click to Trade</p>
                 </div>
             </div>
 
-            <div class="card item-barter">
+            <div class="card item-barter" onclick="openQuickView('Mirror', 'Plant Pot', 'Cute Ghibli anime inspired mirror, painted by a really cool artist, its a bit old though', 'barter', '₾60.00')">
                 <div class="card-image-container">
                     <img src="imgs/mirror.jpg" alt="Mirror" class="card-img">
-                    <button class="wishlist-btn" onclick="toggleWishlist(this)">♥</button>
+                    <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">♥</button>
                 </div>
                 <div class="card-body">
                     <span class="badge badge-barter">Barter Trade</span>
                     <h3>Mirror</h3>
                     <div class="details">
                         <p class="price-tag">Wants: Plant Pot</p>
-                        <p class="timer">Posted 19 hours ago</p>
+                        <p class="timer">Value: ~₾50.00</p>
                     </div>
-                    <button class="btn-secondary" onclick="openModal('Mirror')">Propose Trade</button>
-                    <a href="#" class="viewmore">view more</a>
+                    <p class="view-hint">Click to Trade</p>
                 </div>
             </div>
 
-            <div class="card item-auction">
+            <div class="card item-auction" onclick="openQuickView('Vintage Desk', '₾520.00', 'desk with a really cool deisgn. 3 spacious drawers. Sturdy.', 'auction')">
                 <div class="card-image-container">
                     <img src="imgs/desk.jpg" alt="Desk" class="card-img">
-                    <button class="wishlist-btn" onclick="toggleWishlist(this)">♥</button>
+                    <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">♥</button>
                 </div>
                 <div class="card-body">
                     <span class="badge badge-auction">Auction</span>
                     <h3>Vintage Desk</h3>
                     <div class="details">
-                        <p class="price-tag">Current Bid: ₾320.00</p>
-                        <p class="timer">Ends in: 12m 30s</p>
+                        <p class="min-price">Starting Bid: ₾300.00</p>
+                        <p class="price-tag price-tag2">Current Bid: ₾520.00</p>
+                        <p class="timer">Ends in: <span id="timer3" class="countdown">00:00:00</span></p>
                     </div>
-                    <button class="btn-main" onclick="openModal('Vintage Desk')">Place Bid</button>
-                    <a href="#" class="viewmore">view more</a>
+                    <p class="view-hint">Click to Bid</p>
                 </div>
             </div>
 
@@ -158,12 +153,21 @@
 
     <div id="modal" class="modal-overlay">
         <div class="modal-content">
-            <h2 id="modal-title">Action</h2>
-            <p>Enter your offer amount or trade item:</p>
-            <input type="text" class="modal-input" placeholder="₾0.00 or Item Name">
-            <div class="modal-actions">
-                <button class="btn-main" onclick="closeModal()">Confirm Offer</button>
-                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Item Name</h2>
+            <p id="modal-desc" style="margin: 15px 0; font-size: 0.95rem; color: #444;">Description goes here.</p>
+            
+            <div class="modal-info-box" style="background: #fdf0d5; padding: 15px; border-radius: 8px; border: 1px solid #003049;">
+                <p id="modal-status-label" style="font-weight: bold; margin-bottom: 5px;">Current Price:</p>
+                <p id="modal-price" class="price-tag" style="font-size: 1.5rem;">₾0.00</p>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <label id="input-label" style="display: block; font-weight: bold; margin-bottom: 8px;">Your Bid:</label>
+                <input type="text" id="offer-input" class="modal-input" placeholder="Enter amount or item...">
+                <div class="modal-actions">
+                    <button id="modal-btn" class="btn-main" style="width: 100%;" onclick="alert('Offer Submitted!')">Submit</button>
+                </div>
             </div>
         </div>
     </div>
